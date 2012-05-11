@@ -1,0 +1,7 @@
+<?php
+$players="Hello World"; 
+echo strtoupper($str1); 
+
+?>
+
+
