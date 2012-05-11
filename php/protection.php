@@ -24,12 +24,12 @@ die();
 
 ?>
 
-
+<html>
 <head>
 <title> Login</title>
 </head>
 <body>
-<form action="" method="POST">
+<form action="protection.php" method="POST">
 
 Username:<input type="text" name="uname"><br/>
 Password:<input type="text" name="pass"><br/>
