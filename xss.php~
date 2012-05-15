@@ -1,0 +1,50 @@
+
+1) Cross Site Scripting
+
+<?php
+  
+//strip HTML tags from input data
+$input_data = strip_tags($input_data);
+  
+//turn all characters into their html equivalent
+$preview_data = htmlentities($input_data, ENT_QUOTES);
+  
+//...display $preview_data
+  
+?>
+
+2)SQL Injection : suppose this is the query
+
+<?php
+  
+$name = "George'); DELETE FROM mytable; INSERT INTO mytable (name) VALUES ('you got hacked";
+  
+$sql = "INSERT INTO mytable (name) VALUES ('$name')";
+    
+?>
+
+<?php
+  
+//escape trouble characters
+$name = addslashes($name);
+  
+// not longer than expected length
+$name = substr($name, 0, 32);
+  
+$sql = "INSERT INTO mytable (name) VALUES ('$name')";
+    
+?>
+
+<?php
+  
+function sanitize_data($input_data) {
+  return htmlentities(stripslashes($input_data), ENT_QUOTES);
+}
+  
+?>
+
+
+3)
+
+
+

@@ -1,0 +1,97 @@
+
+1) Cross Site Scripting
+
+<?php
+  
+//strip HTML tags from input data
+$input_data = strip_tags($input_data);
+  
+//turn all characters into their html equivalent
+$preview_data = htmlentities($input_data, ENT_QUOTES);
+  
+//...display $preview_data
+  
+?>
+
+2)SQL Injection : suppose this is the query
+
+<?php
+  
+$name = "George'); DELETE FROM mytable; INSERT INTO mytable (name) VALUES ('you got hacked";
+  
+$sql = "INSERT INTO mytable (name) VALUES ('$name')";
+    
+?>
+
+<?php
+  
+//escape trouble characters
+$name = addslashes($name);
+  
+// not longer than expected length
+$name = substr($name, 0, 32);
+  
+$sql = "INSERT INTO mytable (name) VALUES ('$name')";
+    
+?>
+
+<?php
+  
+function sanitize_data($input_data) {
+  return htmlentities(stripslashes($input_data), ENT_QUOTES);
+}
+  
+?>
+
+
+3) Spoofed Form Input
+
+
+<form action="submit.php" method="post">
+<select name="myvar">
+<option value="1">1</option>
+<option value="2">2</option>
+</select>
+<input type="submit">
+</form>
+
+
+
+<form action="http://yourdomain.com/submit.php" method="post">
+<input type=”text” name=”myvar” value=”333333”>
+<input type="submit">
+</form>
+
+
+$secret = md5(uniqid(rand(), true));
+$_SESSION['secret'] = $secret;
+<input type="hidden" name="secret" value="<php echo $secret;?>">
+
+
+4) CSRF (cross-site request forgeries)
+
+
+<?php
+if($_SERVER['REQUEST_METHOD'] == 'POST')
+{
+    //Here we parse the form
+    if(!isset($_SESSION['csrf']) || $_SESSION['csrf'] !== $_POST['csrf'])
+        throw new RuntimeException('CSRF attack');
+ 
+    
+}
+ 
+//Generate a key, print a form:
+$key = sha1(microtime());
+$_SESSION['csrf'] = $key;
+?>
+ 
+<form action="this.php" method="post">
+<input type="hidden" name="csrf" value="<?php echo $key; ?>" />
+<!-- Some other form fields you want here, and of course a submit button -->
+</form>
+
+
+
+
+

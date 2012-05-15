@@ -1,0 +1,23 @@
+<?php
+interface employee
+{
+	function setdata($empname,$empage);
+	function outputData();
+}
+ 
+class Payment implements employee
+{
+	function setdata($empname,$empage)
+	{
+            //Functionality
+	}
+ 
+	function outputData()
+	{
+		echo "Inside Payment Class";
+	}
+}
+ 
+$a = new Payment();
+$a->outputData();
+?>

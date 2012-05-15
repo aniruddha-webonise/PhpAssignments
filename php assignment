@@ -1,0 +1,25 @@
+1. install lamp 
+2. "hello" application in php
+3. Find occurrence of PHP from string 1.
+4. Find the position where PHP occurs in the string 1.
+5. Create array of words in string 1 & print them using a recursive function.
+6. Capitalise string 1
+7. Combine string 1 & 2. 
+8. Echo string 1 & 2 using heredoc.
+9. Print current date
+10. print 12th Jan 2012 
+11. add 7 days in current date
+12. Cut the string 1 into 4 parts & print it.
+13. Divide the string 1 by occurances of '.'. Combine the array in reverse word sequence
+14. Remove the HTML characters from string.
+15. Print the 'PHP' word from string 1 by traversing it using string functions
+16. Find the length of string 1 & 2
+17. Create file & write string 1 to that file using PHP functions.
+18. Print all Global varibles provided by PHP
+19. Usage and examples of Header (PHP) 
+20. Redirect page 1 to page 2. 
+21. Compare two dates. (12-4-2010 & 12-5-2011). Calculate the days between these two dates. 
+22. Print date after 20 days from current date
+23. Print date in array format.
+24. form validation server side 
+25. password protection site using header (without htaccess)

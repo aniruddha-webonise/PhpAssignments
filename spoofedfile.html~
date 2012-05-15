@@ -1,0 +1,55 @@
+
+Let's assume you have the following HTML form
+
+<html>
+<head>
+<title> Spoofed Form Input </title>
+</head>
+<body>
+<form action="/process.php" method="POST">
+<select name="color">
+    <option value="red">red</option>
+    <option value="green">green</option>
+    <option value="blue">blue</option>
+</select>
+<input type="submit" />
+</form>
+</body>
+</html>
+
+
+Now let's assume that someone does the following:
+
+    Saves your form from their browser to their desktop.
+    Opens the "saved" HTML file and makes the following alterations
+    Modifies the "action" tag so that it now contains the full URL to the form.
+    Removes the "select" tag and replaces it with a "text" tag. 
+
+
+This person would then have a form that looks like the following: 
+
+
+<html>
+<head>
+<title> Spoofed Form Input </title>
+</head>
+<body>
+<form action="http://example.org/process.php" method="POST">
+<textarea name="color"></textarea>
+<input type="submit" />
+</form>
+</body>
+</html>
+
+With this simple form, this person can now submit anything as the value of $_POST['color']. In fact, there was nothing to prevent the person who manipulated your form from including unexpected form variables or anything that can be achieved with an HTML form
+
+So to avoid this,you create a secret that is intended to only be known by the server and the legitimate user. Implementations vary widely but they share the characteristics of being transparent to your users and difficult to exploit.
+
+One implementation would be to store the secret in the user's session:
+ 
+$secret = SHA1(uniqid(rand(), true));
+$_SESSION['secret'] = $secret;
+<input type="hidden" name="secret" value="<php echo $secret;?>">
+
+Every time you display the form, you would regenerate this secret, so that the user always has a current, fresh, and correct secret.
+
