@@ -1,0 +1,15 @@
+2012-05-17 20:42:16 Error: [MissingConnectionException] Database connection "SQLSTATE[HY000] [2013] Lost connection to MySQL server at 'reading initial communication packet', system error: 111" is missing, or could not be created.
+#0 /home/webonise/Projects/Cakephp/lib/Cake/Model/Datasource/DboSource.php(245): Mysql->connect()
+#1 /home/webonise/Projects/Cakephp/lib/Cake/Model/ConnectionManager.php(101): DboSource->__construct(Array)
+#2 /home/webonise/Projects/Cakephp/lib/Cake/Model/Model.php(3382): ConnectionManager::getDataSource('default')
+#3 /home/webonise/Projects/Cakephp/lib/Cake/Model/Model.php(1083): Model->setDataSource('default')
+#4 /home/webonise/Projects/Cakephp/lib/Cake/Model/Model.php(3408): Model->setSource('posts')
+#5 /home/webonise/Projects/Cakephp/lib/Cake/Model/Model.php(2663): Model->getDataSource()
+#6 /home/webonise/Projects/Cakephp/app/Controller/PostsController.php(6): Model->find('all')
+#7 [internal function]: PostsController->index()
+#8 /home/webonise/Projects/Cakephp/lib/Cake/Controller/Controller.php(485): ReflectionMethod->invokeArgs(Object(PostsController), Array)
+#9 /home/webonise/Projects/Cakephp/lib/Cake/Routing/Dispatcher.php(103): Controller->invokeAction(Object(CakeRequest))
+#10 /home/webonise/Projects/Cakephp/lib/Cake/Routing/Dispatcher.php(85): Dispatcher->_invoke(Object(PostsController), Object(CakeRequest), Object(CakeResponse))
+#11 /home/webonise/Projects/Cakephp/app/webroot/index.php(92): Dispatcher->dispatch(Object(CakeRequest), Object(CakeResponse))
+#12 /home/webonise/Projects/Cakephp/index.php(40): require('/home/webonise/...')
+#13 {main}
